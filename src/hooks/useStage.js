@@ -7,8 +7,9 @@ export const useStage = (player, resetPlayer) => {
 
   useEffect(() => {
     const updateStage = (prevStage) => {
+      // First flush the stage
       const newStage = prevStage.map((row) =>
-        row.map((cell) => (cell[1] == "clear" ? [0, "clear"] : cell))
+        row.map((cell) => (cell[1] === "clear" ? [0, "clear"] : cell))
       );
 
       player.tetromino.forEach((row, y) => {
@@ -25,7 +26,7 @@ export const useStage = (player, resetPlayer) => {
     };
 
     setStage((prev) => updateStage(prev));
-  });
+  }, [player]);
 
   return [stage, setStage];
 };
