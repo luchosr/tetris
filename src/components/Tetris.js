@@ -26,10 +26,20 @@ const Tetris = () => {
   const startGame = () => {
     setStage(createStage());
     resetPlayer();
+    setGameOver(false);
   };
 
   const drop = () => {
-    updatePlayerPos({ x: 0, y: 1, collided: false });
+    if (!checkCollision(player, stage, { x: 0, y: 1 })) {
+      updatePlayerPos({ x: 0, y: 1, collided: false });
+    } else {
+      if (player.pos.y < 1) {
+        console.log("GAME OVER!!!");
+        setGameOver(true);
+        setDroptime(null);
+      }
+      updatePlayerPos({ x: 0, y: 1, collided: true });
+    }
   };
 
   const dropPlayer = () => {
