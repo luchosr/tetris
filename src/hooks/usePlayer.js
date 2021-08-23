@@ -9,6 +9,18 @@ export const usePlayer = () => {
     collided: false,
   });
 
+  function rotate(matrix, dir) {
+    // Make the rows to become cols (transpose)
+    const mtrx = matrix.map((_, index) =>
+      matrix.map((column) => column[index])
+    );
+    // Reverse each row to get a rotaded matrix
+    if (dir > 0) return mtrx.map((row) => row.reverse());
+    return mtrx.reverse();
+  }
+
+  export const playerRotate = (stage, dir) => {};
+
   const updatePlayerPos = ({ x, y, collided }) => {
     setPlayer((prev) => ({
       ...prev,
