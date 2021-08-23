@@ -19,7 +19,11 @@ export const usePlayer = () => {
     return mtrx.reverse();
   }
 
-  export const playerRotate = (stage, dir) => {};
+  const playerRotate = (stage, dir) => {
+    const clonedPlayer = JSON.parse(JSON.stringify(player));
+    clonedPlayer.tetromino = rotate(clonedPlayer.tetromino, dir);
+    setPlayer(clonedPlayer);
+  };
 
   const updatePlayerPos = ({ x, y, collided }) => {
     setPlayer((prev) => ({
@@ -37,5 +41,5 @@ export const usePlayer = () => {
     });
   }, []);
 
-  return [player, updatePlayerPos, resetPlayer];
+  return [player, updatePlayerPos, resetPlayer, playerRotate];
 };
