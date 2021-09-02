@@ -30,7 +30,6 @@ const Tetris = () => {
 
   const keyUp = ({ keyCode }) => {
     if (!gameOver) {
-      // Activate the interval again when user releases down arrow.
       if (keyCode === 40) {
         setDropTime(1000 / (level + 1));
       }
@@ -38,7 +37,6 @@ const Tetris = () => {
   };
 
   const startGame = () => {
-    // Reset everything
     setStage(createStage());
     setDropTime(1000);
     resetPlayer();
@@ -49,17 +47,14 @@ const Tetris = () => {
   };
 
   const drop = () => {
-    // Increase level when player has cleared 10 rows
     if (rows > (level + 1) * 10) {
       setLevel((prev) => prev + 1);
-      // Also increase speed
       setDropTime(1000 / (level + 1) + 200);
     }
 
     if (!checkCollision(player, stage, { x: 0, y: 1 })) {
       updatePlayerPos({ x: 0, y: 1, collided: false });
     } else {
-      // Game over!
       if (player.pos.y < 1) {
         console.log("GAME OVER!!!");
         setGameOver(true);
@@ -70,14 +65,10 @@ const Tetris = () => {
   };
 
   const dropPlayer = () => {
-    // We don't need to run the interval when we use the arrow down to
-    // move the tetromino downwards. So deactivate it for now.
     setDropTime(null);
     drop();
   };
 
-  // This one starts the game
-  // Custom hook by Dan Abramov
   useInterval(() => {
     drop();
   }, dropTime);
