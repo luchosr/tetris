@@ -1,7 +1,7 @@
 # Classic Tetris
 
- A game developed using React.js and Hooks. Give it a try!
+ A game developed using React.js and Hooks. Push teh button below and give it a try!
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e009d63f-4439-4ca4-b9be-ff85aeb1f8f0/deploy-status)](https://app.netlify.com/sites/classic-tetrisgame/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/57de9254-5575-4734-83ff-c345fd6024f4/deploy-status)](https://app.netlify.com/sites/classic-tetrisgame/deploys)
 
 ![](src/img/tetris.png)
